@@ -14,8 +14,14 @@ class Player extends React.Component{
       home: '',
       destination: '',
       origin: '',
-      homeConfirmed: false
+      homeConfirmed: this.props.homeConfirmed
     }
+  }
+
+  componentWillReceiveProps(propsIn){
+    this.setState({
+      homeConfirmed: propsIn.homeConfirmed
+    });
   }
 
   handleHomeChange(e){
@@ -46,29 +52,24 @@ class Player extends React.Component{
   render (){
     if(this.props.num !== 'hidden'){
       return (
-        <tr>
-          <th scope='row'>{this.props.num}</th>
-          <td><input type='text' id={'player' + this.props.num + 'Name'} placeholder={'Player ' + this.props.num}/></td>
-          <td>
+        <div className='row'>
+          <div className='col-xl-1'><strong>{this.props.num}</strong></div>
+          <div className='col-xl-2'><input type='text' id={'player' + this.props.num + 'Name'} placeholder={'Player ' + this.props.num}/></div>
+          <div className='col-xl-2'>
             {!this.state.homeConfirmed &&
-              <div>
-                <Select autosize={false} clearable={false} placeholder='Select Home...' value={this.state.home} options={cityOptions} onChange={this.handleHomeChange}/>
-                {this.state.home !== '' &&
-                  <button type='button' className='btn btn-primary btn-sm' onClick={this.confirmHome}>Confirm</button>
-                }
-              </div>
+              <Select className='d-inline-block' autosize={false} clearable={false} placeholder='Select Home...' value={this.state.home} options={cityOptions} onChange={this.handleHomeChange}/>
             }
             {this.state.homeConfirmed &&
               <span>{this.state.home}</span>
             }
-          </td>
-          <td>
-            <Select autosize={false} clearable={false} placeholder='Select Origin...' value={this.state.origin} options={cityOptions} disabled={this.state.home === ''} onChange={this.handleOriginChange}/>
-          </td>
-          <td>
-            <Select autosize={false} clearable={false} placeholder='Select Destination...' value={this.state.destination} options={cityOptions} disabled={this.state.home === ''} onChange={this.handleDestinationnChange}/>
-          </td>
-        </tr>
+          </div>
+          <div className='col-xl-2'>
+            <Select autosize={false} clearable={false} placeholder='Select Origin...' value={this.state.origin} options={cityOptions} disabled={!this.state.homeConfirmed} onChange={this.handleOriginChange}/>
+          </div>
+          <div className='col-xl-2'>
+            <Select autosize={false} clearable={false} placeholder='Select Destination...' value={this.state.destination} options={cityOptions} disabled={!this.state.homeConfirmed} onChange={this.handleDestinationnChange}/>
+          </div>
+        </div>
 
       );
     }
@@ -76,7 +77,8 @@ class Player extends React.Component{
   }
 }
 Player.propTypes = {
-  num: PropTypes.string
+  num: PropTypes.string,
+  homeConfirmed: PropTypes.bool
 };
 
 export default Player;
