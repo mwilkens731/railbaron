@@ -8,7 +8,6 @@ class Player extends React.Component {
   constructor (props) {
     super(props);
     this.handleCityChange = this.handleCityChange.bind(this);
-    this.confirmHome = this.confirmHome.bind(this);
     this.payMe = this.payMe.bind(this);
     this.state = {
       home: '',
@@ -34,13 +33,6 @@ class Player extends React.Component {
       newState[propName] = e.value;
       this.setState(newState);
     }
-  }
-
-  confirmHome () {
-    this.setState({
-      homeConfirmed: true,
-      origin: this.state.home
-    });
   }
 
   payMe () {
