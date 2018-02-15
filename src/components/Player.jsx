@@ -69,7 +69,7 @@ class Player extends React.Component {
             <button type='button' className='ml-1 btn btn-secondary btn-sm' onClick={this.payMe} disabled={this.state.destination === ''}>Arrive!</button>
           </div>
           <div className='col-xl-2'>
-            <span>{this.state.payoff}</span>
+            <div className='mt-1'>{this.state.payoff}</div>
           </div>
         </div>
 
