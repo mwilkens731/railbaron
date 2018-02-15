@@ -68,11 +68,8 @@ class Player extends React.Component {
           <div className='col-xl-1'>
             <button type='button' className='ml-1 btn btn-secondary btn-sm' onClick={this.payMe} disabled={this.state.destination === ''}>Arrive!</button>
           </div>
-          <div className='col-xl-2'>
-            <div className='mt-1'>{this.state.payoff}</div>
-          </div>
+          <div className='col-xl-2 mt-1'>{this.state.payoff}</div>
         </div>
-
       );
     }
     return null;
