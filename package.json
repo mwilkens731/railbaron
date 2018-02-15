@@ -2,7 +2,7 @@
   "name": "railbaron",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mwilkens731.github.io/draftLottery",
+  "homepage": "https://mwilkens731.github.io/railbaron",
   "dependencies": {
     "bootstrap": "^4.0.0",
     "prop-types": "15.6.0",
